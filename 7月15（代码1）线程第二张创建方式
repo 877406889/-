@@ -1,0 +1,47 @@
+package day06;
+/**
+ * 第二种创建线程的方式
+ * 实现Runnable接口并重写run方法.
+ * 这种做法是单独定义线程要执行的任务
+ * 
+ * 第一种创建线程的方式(直接继承Thread)有两个不足：
+ * 1. 由于Java是单继承,这就导致若继承了Thread就无法继承其他类,这在实际
+ * 开发时是非常不方便的，因为不能复用其他类的方法.
+ * 2. 直接重写Thread的run方法在当前线程种会导致线程要执行的任务与当前线程有一个必然
+ * 的耦合关系,不利于线程复用.
+ * @author 87740
+ *
+ */
+public class ThreadDemo2 {
+	public static void main(String[] arg)
+	{
+		Runnable r1=new MyRunnable1();
+		Runnable r2=new MyRunnable2();
+		
+		Thread   t1=new Thread(r1);
+		Thread   t2=new Thread(r2);
+		
+		t1.start();
+		t2.start();
+	}
+}
+
+class MyRunnable1 implements Runnable{
+	public void run(){
+		for(int i=0;i<1000;i++)
+		{
+			System.out.println("这是一个测试吗？");
+		}
+	}
+}
+
+
+class MyRunnable2 implements Runnable
+{
+	public void run(){
+		for(int i=0;i<1000;i++)
+		{
+			System.out.println("噢噢多线程测试");
+		}
+	}
+}
