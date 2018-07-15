@@ -1,0 +1,31 @@
+package day06;
+/**
+ * 获取线程的相关方法
+ * @author 87740
+ *
+ */
+public class Thread_info {
+	public static void main(String[] arg)
+	{
+		//获取运行main方法的线程
+		Thread main=Thread.currentThread();
+		//获取线程的名字
+		String name=main.getName();
+		System.out.println("线程的名字为："+name);
+		//获取唯一标识
+		long id=main.getId();
+		System.out.println("唯一标识为："+id);
+		//优先级
+		int priority=main.getPriority();
+		System.out.println("优先级为"+priority);
+		//线程是否处于活动状态
+		boolean isAlive=main.isAlive();
+		System.out.println("该线程是否活着"+isAlive);
+		//是否为守护线程
+		boolean isDaemon=main.isDaemon();
+		System.out.println("该线程是否为守护线程"+isDaemon);
+		//是否被中断
+		boolean isInterrupted=main.isInterrupted();
+		System.out.println("该线程是否被中断"+isInterrupted);
+	}
+}
